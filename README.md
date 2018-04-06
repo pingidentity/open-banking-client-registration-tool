@@ -11,7 +11,7 @@ This is a simple Java command line tool that demonstrates how to issue and send 
 
 To run the tool:
 
-- ensure that a software statement has been created using the Open Banking Directory Frontend and that a signing key and network certificate are associated to the software statement (as explained in the previous blog)
+- ensure that a software statement has been created using the Open Banking Directory Frontend and that a signing key and network certificate are associated to the software statement (as explained [here] (https://www.pingidentity.com/en/company/blog/posts/2018/enable-open-banking-dynamic-client-registration-with-ping-identity.html))
 - download and unzip the source code from GitHub or clone the source
 - change the following parameters in the src/main/resources/configuration.properties file:
   - ob.signingKeyId the signing key ID obtained from the Open Banking Directory Frontend
