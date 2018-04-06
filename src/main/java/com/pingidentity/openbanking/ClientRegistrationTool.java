@@ -52,8 +52,10 @@ public class ClientRegistrationTool {
 
 	private static final String ASPSP_REDIRECT_URI = "aspsp.redirectUri";
 	private static final String ASPSP_AUDIENCE = "aspsp.audience";
+	private static final String ASPSP_AUTH_METHOD = "aspsp.authMethod";
 	private static final String ASPSP_REGISTRATION_ENDPOINT = "aspsp.registrationEndpoint";
 	private static final String ASPSP_NETWORK_CERT_PASSWORD = "aspsp.networkCertPassword";
+	
 
 	Configuration config;
 	
@@ -146,9 +148,9 @@ public class ClientRegistrationTool {
 		claims.setClaim("software_statement", ssa);
 		// set client specific configuration parameters (auth method, supported grant_types, etc.)
 		claims.setStringListClaim("redirect_uris", Arrays.asList(config.getString(ASPSP_REDIRECT_URI)));
-		claims.setClaim("token_endpoint_auth_method", "private_key_jwt");
-		claims.setStringListClaim("grant_types", Arrays.asList("authorization_code", "refresh_token", "client_credentials"));
-		claims.setStringListClaim("response_types", Arrays.asList("code"));
+		claims.setClaim("token_endpoint_auth_method", config.getString(ASPSP_AUTH_METHOD));
+		claims.setStringListClaim("grant_types", Arrays.asList("authorization_code", "refresh_token", "client_credentials", "implicit"));
+		claims.setStringListClaim("response_types", Arrays.asList("code id_token"));
 		claims.setClaim("id_token_signed_response_alg", "PS256");
 		claims.setClaim("request_object_signing_alg", "PS256");
 		claims.setClaim("application_type", "Web");
